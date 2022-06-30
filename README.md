@@ -10,6 +10,7 @@ status (required), deleted at (optional).
 ● User can create, retrieve, update, delete Tutorials.
 
 ● There is a search box for finding Tutorials by title and description.
+
 -------------------------------------------
 
 API Endpoints
