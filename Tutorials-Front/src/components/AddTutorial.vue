@@ -1,8 +1,9 @@
 <template>
-  <div class="submit-form">
+  <div class="submit-form text-left align-middle">
+    <h4>Nuevo tutorial</h4>
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">Titulo</label>
         <input
           type="text"
           class="form-control"
@@ -23,7 +24,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">Descripción</label>
         <input
           class="form-control"
           id="description"
@@ -31,16 +32,12 @@
           name="description"
         />
       </div>
+      <label class="m-1"> ¿Como quiero mantener el tutorial? </label>
       <div class="form-group">
-        <label for="published_status">Published</label>
-        <input
-          type="checkbox"
-          class="form-control"
-          id="published_status"
-          required
-          v-model="tutorial.published_status"
-          name="published_status"
-        />
+        <input class="m-1" type="radio" id="tutorial.published_status_false" value="false" v-model="tutorial.published_status">
+        <label class="m-1" for="uno"> Oculto </label>
+        <input class="m-1" type="radio" id="tutorial.published_status_true" value="true" v-model="tutorial.published_status">
+        <label class="m-1" for="Dos"> Público </label>
       </div>
       <div class="form-group">
         <label for="deleted_at">Deleted_at</label>
@@ -74,7 +71,8 @@ export default {
         published_status: false,
         deleted_at: null,
       },
-      submitted: false
+      submitted: false,
+      toggle_status : true
     };
   },
   methods: {
