@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand ">
       <router-link to="/" class="navbar-brand">Tutos.com</router-link>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-</script>
+
 
 <style>
 #app {
@@ -30,7 +30,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #000000;
+  
 }
 </style>

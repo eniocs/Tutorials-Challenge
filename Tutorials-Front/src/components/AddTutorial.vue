@@ -48,15 +48,15 @@
           type="text"
           class="form-control"
           id="deleted_at"
-          v-model="tutorial.title"
+          v-model="tutorial.deleted_at"
           name="deleted_at"
         />
       </div>
       <button @click="saveTutorial" class="btn btn-success">Submit</button>
     </div>
     <div v-else>
-      <h4>You submitted successfully!</h4>
-      <button class="btn btn-success" @click="newTutorial">Add</button>
+      <h4>El tutorial se agregó correctamente!</h4>
+      <button class="btn btn-success btn-block" @click="newTutorial">Agregar otro tutorial</button>
     </div>
   </div>
 </template>
@@ -106,7 +106,7 @@ export default {
 </script>
 <style>
 .submit-form {
-  max-width: 300px;
+  max-width: 1000px;
   margin: auto;
 }
 </style>

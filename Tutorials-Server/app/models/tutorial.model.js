@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     published_status: {
       type: Sequelize.BOOLEAN,
-      allowNull: false,
+      //allowNull: false,
     },
     deleted_at: {
       type: Sequelize.DATEONLY
