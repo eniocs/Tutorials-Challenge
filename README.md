@@ -12,13 +12,23 @@ status (required), deleted at (optional).
 ● There is a search box for finding Tutorials by title and description.
 
 API Endpoints
+
 VERB - PATH - Description
+
 POST - /tutorials/ - Tutorial create
+
 GET - /tutorials/ - Tutorial list
 Should support query params as well for filtering
+
 GET - /tutorials/:id - Tutorial show
+
 DELETE - /tutorials/:id - Tutorial delete
+
 PUT - /tutorials/:id - Tutorial update
+
 DELETE - /tutorials/mass_delete - Delete all tutorials
 
+
+
+-------------------------------------------
 Run server: Node Tutorials-Server/server.js
