@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 const app = express();
 
 var corsOptions = {
@@ -25,6 +26,9 @@ db.sequelize.sync()
     console.log("Failed to sync db: " + err.message);
   });
 
+  db.sequelize.sync({ force: true }).then(() => {
+    console.log("Drop and re-sync db.");
+  });
 
 
 // simple route

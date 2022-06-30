@@ -1,9 +1,10 @@
-// Import the built-in data types
-import { DataTypes } from '@sequelize/core';
 module.exports = (sequelize, Sequelize) => {
   const Tutorial = sequelize.define("tutorial", {
     id: {
-      Type: Sequelize.UUID
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
     },
     title: {
       type: Sequelize.STRING

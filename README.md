@@ -20,4 +20,4 @@ PUT - /tutorials/:id - Tutorial update
 DELETE - /tutorials/mass_delete - Delete all tutorials
 
 
-Run server:  node server.js
+Run server: Node Tutorials-Server/server.js
