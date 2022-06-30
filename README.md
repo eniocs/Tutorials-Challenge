@@ -19,18 +19,18 @@ API Endpoints
 
 VERB - PATH - Description
 
-POST - /tutorials/ - Tutorial create
+POST - api/tutorials/ - Tutorial create
 
-GET - /tutorials/ - Tutorial list
+GET - api/tutorials/ - Tutorial list
 Should support query params as well for filtering
 
-GET - /tutorials/:id - Tutorial show
+GET - api/tutorials/:id - Tutorial show
 
-DELETE - /tutorials/:id - Tutorial delete
+DELETE - api/tutorials/:id - Tutorial delete
 
-PUT - /tutorials/:id - Tutorial update
+PUT - api/tutorials/:id - Tutorial update
 
-DELETE - /tutorials/mass_delete - Delete all tutorials
+DELETE - api/tutorials/mass_delete - Delete all tutorials
 
 
 
