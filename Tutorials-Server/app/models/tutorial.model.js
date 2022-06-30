@@ -7,7 +7,8 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true
     },
     title: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     video_url: {
       type: Sequelize.STRING
@@ -16,7 +17,8 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     published_status: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
     },
     deleted_at: {
       type: Sequelize.DATEONLY
