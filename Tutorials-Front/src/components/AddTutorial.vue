@@ -68,9 +68,11 @@ export default {
     return {
       tutorial: {
         id: null,
+        video_url:"",
         title: "",
         description: "",
-        published: false
+        published_status: false,
+        deleted_at: null,
       },
       submitted: false
     };
@@ -79,7 +81,10 @@ export default {
     saveTutorial() {
       var data = {
         title: this.tutorial.title,
-        description: this.tutorial.description
+        video_url: this.tutorial.video_url,
+        description: this.tutorial.description,
+        published_status: this.tutorial.published_status,
+        deleted_at: this.tutorial.deleted_at
       };
       TutorialDataService.create(data)
         .then(response => {
