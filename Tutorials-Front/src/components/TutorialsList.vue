@@ -22,11 +22,12 @@
           <ul class="list-group">
             <li class="list-group-item"
               :class="{ active: index == currentIndex }"
-              v-for="(tutorial, index) in tutorials"
+              v-for="(tutorial, index) in filteredList()"
               :key="index"
               @click="setActiveTutorial(tutorial, index)"
             >
-              {{ tutorial.title }}
+              <span>{{ tutorial.title }} </span><span class="float-right text-danger">{{ !tutorial.deleted_at ? ' ' : "Deleted" }} </span>
+
             </li>
           </ul>
           <button class="mt-3 btn btn-sm btn-default btn-red" @click="removeAllTutorials">
@@ -75,6 +76,11 @@ export default {
     };
   },
   methods: {
+  filteredList() {
+  return this.tutorials.filter((tutorial) =>
+     tutorial.title.toLowerCase().includes( this.title.toLowerCase())
+  )
+},
     retrieveTutorials() {
       TutorialDataService.getAll()
         .then(response => {
@@ -106,15 +112,8 @@ export default {
     },
     
     searchTitle() {
-      TutorialDataService.findByTitle(this.title)
-        .then(response => {
-          this.tutorials = response.data;
-          this.setActiveTutorial(null);
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      
+      this.tutorials = this.tutorials.filter(tutorial => tutorial.title == this.title)
     }
   },
   mounted() {

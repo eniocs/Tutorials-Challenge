@@ -16,8 +16,9 @@ class TutorialDataService {
     return http.delete(`/tutorials/${id}`);
   }
   deleteAll() {
-    return http.delete(`/tutorials/mass_delete`);
+    return http.delete(`/tutorials`);
   }
+  
 
 }
 export default new TutorialDataService();

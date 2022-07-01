@@ -1,7 +1,7 @@
 <template>
   <div v-if="currentTutorial" class="edit-form text-left align-middle border p-4 rounded bcolor" @closed="v$.$reset()">
     <h4>Editar Tutorial
-    <button class="badge badge-danger float-right mr-2"
+    <button v-if="!this.currentTutorial.deleted_at" class="badge badge-danger float-right mr-2"
       @click="deleteTutorial"
       >
       Delete
@@ -51,11 +51,11 @@
           <label class="m-1 mb-0" for="Dos"> Público </label>
         </div>
       </div>
-      <div class="text-center text-danger">Borrado el {{currentTutorial.deleted_at}}</div>
+      <div v-if="this.currentTutorial.deleted_at" class="text-center text-danger">Borrado el {{currentTutorial.deleted_at}}</div>
   </form>
     
     
-    <button type="submit" class="badge badge-primary"
+    <button  v-if="!this.currentTutorial.deleted_at" type="submit" class="badge badge-primary"
       @click="updateTutorial"
     >
       Actualizar
