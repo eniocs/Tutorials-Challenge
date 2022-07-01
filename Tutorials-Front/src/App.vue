@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand ">
-      <router-link to="/" class="navbar-brand">Tutos.com</router-link>
+    <nav class="navbar navbar-expand">
+      <router-link to="/" class="navbar-brand text-dark">Tutos.com</router-link>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/tutorials" class="nav-link">Tutorials</router-link>
+          <router-link to="/tutorials" class="nav-link text-dark">Tutorials</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add" class="nav-link">Agregar</router-link>
+          <router-link to="/add" class="nav-link text-dark">Agregar</router-link>
         </li>
       </div>
     </nav>
-    <div class="container mt-3">
+    <div class="container mt-3 col-lg-6 ">
       <router-view />
     </div>
   </div>
@@ -36,5 +36,9 @@ export default {
   text-align: center;
   color: #000000;
   
+}
+
+.navbar {
+    background-color: #f7f1f1;
 }
 </style>

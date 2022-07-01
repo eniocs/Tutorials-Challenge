@@ -1,7 +1,7 @@
 <template>
   <div class="submit-form text-left align-middle" @closed="v$.$reset()">
     <div v-if="!submitted">
-        <h4>Nuevo tutorial</h4>
+        <h5 class="text-dark">Nuevo tutorial</h5>
         <form @submit.prevent="handleSubmit">
             <div class="form-group">
               <label for="title">Titulo</label>
@@ -46,7 +46,7 @@
               </div>
               <small class="text-danger" v-if="!v$.tutorial.published_status.required.$response">* Seleccionar estado</small>
             </div>
-            <button @click="saveTutorial" class="btn btn-success" :disabled="isDisabled">Submit</button>
+            <button @click="saveTutorial" class="btn btn-info" :disabled="isDisabled">Submit</button>
         </form>
     </div>
     <div v-else>
