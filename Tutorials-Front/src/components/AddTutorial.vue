@@ -1,6 +1,6 @@
 <template>
   <div class="submit-form text-left align-middle" @closed="v$.$reset()">
-    <div v-if="!submitted">
+    <div v-if="!submitted" class="border p-4 rounded bcolor" >
         <h5 class="text-dark">Nuevo tutorial</h5>
         <form @submit.prevent="handleSubmit">
             <div class="form-group">
@@ -49,7 +49,7 @@
             <button @click="saveTutorial" class="btn btn-info" :disabled="isDisabled">Submit</button>
         </form>
     </div>
-    <div v-else>
+    <div class="border p-5 mt-5 rounded bcolor" v-else>
       <h4>El tutorial se agregó correctamente!</h4>
       <button class="btn btn-success btn-block" @click="newTutorial">Agregar otro tutorial</button>
     </div>
@@ -119,7 +119,11 @@ export default {
 </script>
 <style>
 .submit-form {
-  max-width: 1000px;
+  max-width: 1500px;
   margin: auto;
+}
+
+.bcolor{
+  background-color: #f5f5f5;
 }
 </style>

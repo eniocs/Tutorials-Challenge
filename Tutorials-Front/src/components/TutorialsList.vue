@@ -1,58 +1,65 @@
-<template>
-  <div class="list row">
-    <div class="col-md-12">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search by title or description"
-          v-model="title"/>
-        <div class="input-group-append">
-          <button class="btn btn-outline-info" type="button"
-            @click="searchTitle"
-          >
-            Search
+<template >
+  <div v-if="tutorials.length">
+  <div class="list row  p-4 rounded bcolor">
+    
+        <div class="col-md-12">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar por titulo o descripción"
+              v-model="title"/>
+            <div class="input-group-append">
+              <button class="btn btn-outline-info" type="button"
+                @click="searchTitle"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4>Tutoriales</h4>
+          <hr>
+
+          <ul class="list-group">
+            <li class="list-group-item"
+              :class="{ active: index == currentIndex }"
+              v-for="(tutorial, index) in tutorials"
+              :key="index"
+              @click="setActiveTutorial(tutorial, index)"
+            >
+              {{ tutorial.title }}
+            </li>
+          </ul>
+          <button class="mt-3 btn btn-sm btn-default btn-red" @click="removeAllTutorials">
+            Eliminar todos
           </button>
         </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <h4>Tutorials List</h4>
-      <hr>
-
-      <ul class="list-group">
-        <li class="list-group-item"
-          :class="{ active: index == currentIndex }"
-          v-for="(tutorial, index) in tutorials"
-          :key="index"
-          @click="setActiveTutorial(tutorial, index)"
-        >
-          {{ tutorial.title }}
-        </li>
-      </ul>
-      <button class="mt-3 btn btn-sm btn-default btn-red" @click="removeAllTutorials">
-        Eliminar todos
-      </button>
-    </div>
-    <div class="col-md-6">
-      <div v-if="currentTutorial">
-        <h4>Tutorial</h4>
-        
-        <hr>
-        <div>
-          <label><strong>Titulo:</strong></label> {{ currentTutorial.title }}
+        <div class="col-md-6 mt-lg-0 mt-md-0 mt-sm-4">
+          <div v-if="currentTutorial">
+            <h4>Tutorial</h4>
+            
+            <hr>
+            <div>
+              <label><strong>Titulo:</strong></label> {{ currentTutorial.title }}
+            </div>
+            <div>
+              <label><strong>Descripción:</strong></label> {{ currentTutorial.description }}
+            </div>
+            <div>
+              <label><strong>Estado:</strong></label> {{ currentTutorial.published_status ? "Publicado" : "Oculto" }}
+            </div>
+            <router-link :to="'/tutorials/' + currentTutorial.id" class="badge badge-warning  p-2 pl-4 pr-4">Editar</router-link>
+          </div>
+          <div v-else>
+            <h4>&nbsp;</h4>
+            <hr>
+            <p class="borderstyle">Seleccione un tutorial para ver su información aqui!</p>
+          </div>
         </div>
-        <div>
-          <label><strong>Descripción:</strong></label> {{ currentTutorial.description }}
-        </div>
-        <div>
-          <label><strong>Estado:</strong></label> {{ currentTutorial.published ? "Publicado" : "Oculto" }}
-        </div>
-        <router-link :to="'/tutorials/' + currentTutorial.id" class="badge badge-warning p-2">Editar</router-link>
-      </div>
-      <div v-else>
-        <h4>&nbsp;</h4>
-        <hr>
-        <p class="borderstyle">Seleccione un tutorial para ver su información aqui!</p>
-      </div>
-    </div>
+     </div>
+     </div> 
+     <div class="border p-5 mt-5 rounded bcolor" v-else>
+      <h4>No hay tutoriales aquí</h4>
+      <p>Comencemos por <router-link to="/add" >Agregar</router-link> uno </p>
   </div>
 </template>
 <script>
@@ -118,7 +125,7 @@ export default {
 <style>
 .list {
   text-align: left;
-  max-width: 750px;
+  max-width: 1500px;
   margin: auto;
 }
 
@@ -133,4 +140,7 @@ export default {
   color: #d43f3a;
 }
 
+.bcolor{
+  background-color: #f5f5f5;
+}
 </style>

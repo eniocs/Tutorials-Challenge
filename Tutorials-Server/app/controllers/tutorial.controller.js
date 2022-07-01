@@ -14,8 +14,10 @@ exports.create = (req, res) => {
   // Create a Tutorial
   const tutorial = {
     title: req.body.title,
+    video_url: req.body.video_url,
     description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    published_status: req.body.published_status,
+    deleted_at: req.body.deleted_at,
   };
   // Save Tutorial in the database
   Tutorial.create(tutorial)
