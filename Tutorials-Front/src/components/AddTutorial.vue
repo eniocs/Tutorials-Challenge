@@ -57,6 +57,7 @@
 </template>
 <script>
 import TutorialDataService from "../services/TutorialDataService";
+import jwtService from "../services/jwtService";
 import useVuelidate from '@vuelidate/core'
 import { required, url, minLength } from '@vuelidate/validators'
 export default {
@@ -72,6 +73,7 @@ export default {
         description: "",
         published_status: null,
         deleted_at: null,
+        token: jwtService.create(),
       },
       submitted: false,
       toggle_status : true
@@ -83,17 +85,19 @@ export default {
         title : { required, minLength:  minLength(4), $lazy: false},
         video_url : { url, $lazy: true},
         published_status: { required, $lazy: true},
+        
       } 
     }
   },
   methods: {
-    saveTutorial() {
+  saveTutorial() {
       var data = {
         title: this.tutorial.title,
         video_url: this.tutorial.video_url,
         description: this.tutorial.description,
         published_status: this.tutorial.published_status,
-        deleted_at: this.tutorial.deleted_at
+        deleted_at: this.tutorial.deleted_at,
+        token :  this.tutorial.token,
       };
       TutorialDataService.create(data)
         .then(response => {
@@ -106,15 +110,19 @@ export default {
         });
     },
     newTutorial() {
+      
       this.submitted = false;
       this.tutorial = {};
+      this.tutorial.token = jwtService.create();
+      
     }
-  }, computed: {
+  }, 
+  computed: {
     isDisabled: function(){
         //enables the Submit button only if there is a valid title or pulish_status selection 
         return this.tutorial.title == null || this.tutorial.published_status == null || this.v$.tutorial.title.required.$invalid  || this.v$.tutorial.title.minLength.$invalid;
     }
-  }
+  },
 };
 </script>
 <style>
@@ -124,6 +132,14 @@ export default {
 }
 
 .bcolor{
-  background-color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.48);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(11.5px);
+-webkit-backdrop-filter: blur(11.5px);
+border: 1px solid rgba(255, 255, 255, 0.41);
 }
 </style>
+
+
+

@@ -1,13 +1,32 @@
 const db = require("../models");
 const Tutorial = db.tutorials;
 const Op = db.Sequelize.Op;
+const jwt = require("jsonwebtoken")
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
-  // Validate request
+
+  //for debugging
+  console.log(Date.now()) // new Timestamp
+  console.log(jwt.verify(req.body.token, 'secret').exp) // Token Timestamp
+  // If Actual time is greater than  request expiration then 401 unautorhized response
+  if (Date.now() > jwt.verify(req.body.token, 'secret').exp) {
+    res.status(401).send({
+      message: "Tiempo Excedido!"
+    });
+    return;
+  }
+  // Validate request title
   if (!req.body.title) {
     res.status(400).send({
-      message: "Content can not be empty!"
+      message: "Title can not be empty!"
+    });
+    return;
+  }
+  // Validate request published_status
+  if (!req.body.published_status) {
+    res.status(400).send({
+      message: "published_status can not be empty!"
     });
     return;
   }
