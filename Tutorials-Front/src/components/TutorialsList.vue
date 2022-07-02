@@ -41,6 +41,7 @@
               <div>
                 <label><strong>Titulo:</strong></label> {{ currentTutorial.title }}
               </div>
+                <img :src="currentTutorial.video_thumb" alt="" class="w-100"> 
               <div>
                 <label><strong>Descripción:</strong></label> {{ currentTutorial.description }}
               </div>
@@ -116,7 +117,8 @@ export default {
       this.currentIndex = -1;
     },
     setActiveTutorial(tutorial, index) {
-      this.currentTutorial = tutorial;
+      this.currentTutorial = tutorial;//-----------------------------
+      this.currentTutorial.video_thumb = "https://img.youtube.com/vi/" + this.youtube_parser(this.currentTutorial.video_url) +"/hqdefault.jpg";
       this.currentIndex = tutorial ? index : -1;
     },
     removeAllTutorials() {
@@ -129,7 +131,6 @@ export default {
           console.log(e);
         });
     },
-    
     searchTitle() {
       this.currentIndex=-1; //Deselects current tutorial
       this.currentTutorial = null; // Also removes the current tutorial preview
@@ -137,10 +138,25 @@ export default {
       this.searchDisabled = !this.searchDisabled; //Enables/Disables search button 
       if (!this.searchDisabled) {this.searchTerms = ""; this.title = "";}
       //this.tutorials = this.tutorials.filter(tutorial => tutorial.title == this.title)
+    },
+    youtube_parser(url){   
+        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+        var match = url.match(regExp);
+        return (match&&match[7].length==11)? match[7] : false;
+    },
+    getVideoThumbs(){
+
+      this.tutorials.forEach(function (element) {
+          element.Active = "false";
+        });
+      console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
     }
+
   },
   mounted() {
     this.retrieveTutorials();
+        this.getVideoThumbs();
+
   }
 };
 </script>
