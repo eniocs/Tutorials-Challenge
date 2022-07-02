@@ -46,12 +46,12 @@
               </div>
               <small class="text-danger" v-if="!v$.tutorial.published_status.required.$response">* Seleccionar estado</small>
             </div>
-            <button @click="saveTutorial" class="btn btn-info" :disabled="isDisabled">Submit</button>
+            <button @click="saveTutorial" class="btn btn-info btn-md float-right fix-btn" :disabled="isDisabled">Guardar</button>
         </form>
     </div>
     <div class="border p-5 mt-5 rounded bcolor" v-else>
       <h4>El tutorial se agregó correctamente!</h4>
-      <button class="btn btn-success btn-block" @click="newTutorial">Agregar otro tutorial</button>
+      <button class="btn btn-success btn-md" @click="newTutorial">Agregar otro tutorial</button>
     </div>
   </div>
 </template>
@@ -138,6 +138,11 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(11.5px);
 -webkit-backdrop-filter: blur(11.5px);
 border: 1px solid rgba(255, 255, 255, 0.41);
+}
+
+.fix-btn{
+margin-top: -33px;
+
 }
 </style>
 

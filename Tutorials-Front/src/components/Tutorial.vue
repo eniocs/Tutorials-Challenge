@@ -1,10 +1,10 @@
 <template>
   <div v-if="currentTutorial" class="edit-form text-left align-middle border p-4 rounded bcolor" @closed="v$.$reset()">
     <h4>Editar Tutorial
-    <button v-if="!this.currentTutorial.deleted_at" class="badge badge-danger float-right mr-2"
+    <button v-if="!this.currentTutorial.deleted_at" class="btn btn-danger btn-md float-right mr-0"
       @click="deleteTutorial"
       >
-      Delete
+      <font-awesome-icon icon="fa-solid fa-hand-point-up" />
     </button>
     </h4>
     <form>
@@ -52,14 +52,13 @@
         </div>
       </div>
       <div v-if="this.currentTutorial.deleted_at" class="text-center text-danger">Borrado el {{currentTutorial.deleted_at}}</div>
-  </form>
-    
-    
-    <button  v-if="!this.currentTutorial.deleted_at" type="submit" class="badge badge-primary"
-      @click="updateTutorial"
-    >
+      
+      <button  v-if="!this.currentTutorial.deleted_at" type="submit" class="btn btn-primary btn-md  fix-btn float-right "
+        @click="updateTutorial"
+      >
       Actualizar
-    </button>
+      </button>
+    </form>
     <p>{{ message }}</p>
   </div>
   <div v-else>
@@ -153,5 +152,10 @@ export default {
 .edit-form {
   max-width: 1500px;
   margin: auto;
+}
+
+.fix-btn{
+margin-top: -33px;
+
 }
 </style>

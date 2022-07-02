@@ -3,14 +3,14 @@
   <div v-if="(tutorials.length && !searchTerms.length) ||( !filteredTutorials.length == 0 )">
     <div class="list row  p-4 rounded bcolor">
           <div class="col-md-12">
-            <div class="input-group mb-3">
-              <input id="searchBox" :disabled="searchDisabled" type="text" class="form-control inactive" placeholder="Buscar por titulo o descripción"
+            <div class="input-group mb-3"> 
+              <input id="searchBox" :disabled="searchDisabled" type="text" class="form-control inactive" placeholder="Título o descripción"
                 v-model="title" v-on:keyup.enter="searchTitle"/>
               <div class="input-group-append">
-                <button :disabled="isDisabled" v-bind:class="[ searchDisabled ? 'btn btn-outline-danger' : 'btn btn-outline-info' ]" type="button" 
+                <button :disabled="isDisabled" v-bind:class="[ searchDisabled ? 'btn btn-outline-danger btn-md' : 'btn btn-outline-info' ]" type="button" 
                   @click="searchTitle"
                 >
-                  <span v-if="!searchDisabled">Search</span> <span v-if="searchDisabled"> x </span>
+                  <span v-if="!searchDisabled"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></span> <span v-if="searchDisabled"> <font-awesome-icon icon="fa-solid fa-xmark" /> </span>
                 </button>
               </div>
             </div>
@@ -30,7 +30,7 @@
                 <span>{{ tutorial.title }} </span><span class="float-right text-danger">{{ !tutorial.deleted_at ? ' ' : "Deleted" }} </span>
               </li>
             </ul>
-            <button class="mt-3 btn btn-sm btn-default btn-red" @click="removeAllTutorials">
+            <button class="mt-3 btn btn-md btn-default btn-red float-right" @click="removeAllTutorials">
               Eliminar todos
             </button>
           </div>
@@ -49,7 +49,7 @@
               <div>
                 <label><strong>Estado:</strong></label> {{ currentTutorial.published_status ? "Publicado" : "Oculto" }}
               </div>
-              <router-link :to="'/tutorials/' + currentTutorial.id" class="badge badge-warning  p-2 pl-4 pr-4">Editar</router-link>
+              <router-link :to="'/tutorials/' + currentTutorial.id" class="btn btn-warning btn-md float-right">Editar</router-link>
             </div>
             <div v-else>
               <h4>&nbsp;</h4>
@@ -93,13 +93,13 @@ export default {
     }
   },
   methods: {
-  filteredList() {
-    this.filteredTutorials = this.tutorials.filter((tutorial) =>
-          (tutorial.title.toLowerCase().includes( this.title.toLowerCase()) //Filter using Title
-      ||  tutorial.description.toLowerCase().includes( this.searchTerms.toLowerCase())) // Filter using Description
-      &&  tutorial.deleted_at == null // Logically hide the deleted tutorials if it has not deleted_at date.
-          )
-    return this.filteredTutorials;
+    filteredList() {
+      this.filteredTutorials = this.tutorials.filter((tutorial) =>
+            (tutorial.title.toLowerCase().includes( this.title.toLowerCase()) //Filter using Title
+        ||  tutorial.description.toLowerCase().includes( this.searchTerms.toLowerCase())) // Filter using Description
+        &&  tutorial.deleted_at == null // Logically hide the deleted tutorials if it has not deleted_at date.
+            )
+      return this.filteredTutorials;
     },
     retrieveTutorials() {
       TutorialDataService.getAll()
@@ -115,7 +115,6 @@ export default {
       this.retrieveTutorials();
       this.currentTutorial = null;
       this.currentIndex = -1;
-      
     },
     setActiveTutorial(tutorial, index) {
       this.currentTutorial = tutorial;
@@ -157,7 +156,9 @@ export default {
   },
 };
 </script>
+
 <style>
+
 .list {
   text-align: left;
   max-width: 1500px;
@@ -165,7 +166,6 @@ export default {
 }
 
 .borderstyle{
-
   border-left: 4px solid #17a2b8;
   padding: 5px;
 }
@@ -182,6 +182,6 @@ export default {
 .validatorAlert{
   position: absolute;
   margin-top: -15px;
-
 }
+
 </style>
