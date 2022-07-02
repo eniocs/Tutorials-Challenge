@@ -4,10 +4,10 @@
     <div class="list row  p-4 rounded bcolor">
           <div class="col-md-12">
             <div class="input-group mb-3">
-              <input id="searchBox" :disabled="searchDisabled" type="text" class="form-control" placeholder="Buscar por titulo o descripción"
+              <input id="searchBox" :disabled="searchDisabled" type="text" class="form-control inactive" placeholder="Buscar por titulo o descripción"
                 v-model="title" v-on:keyup.enter="searchTitle"/>
               <div class="input-group-append">
-                <button v-bind:class="[ searchDisabled ? 'btn btn-outline-danger' : 'btn btn-outline-info' ]" type="button" 
+                <button :disabled="isDisabled" v-bind:class="[ searchDisabled ? 'btn btn-outline-danger' : 'btn btn-outline-info' ]" type="button" 
                   @click="searchTitle"
                 >
                   <span v-if="!searchDisabled">Search</span> <span v-if="searchDisabled"> x </span>
@@ -15,6 +15,7 @@
               </div>
             </div>
             <small class="text-danger validatorAlert" v-if="v$.title.minLength.$invalid">* La busqueda debe contener mas de cuatro caracteres</small>
+            
           </div>
           <div class="col-md-6 mt-2">
             <h4>Tutoriales</h4>
@@ -71,7 +72,7 @@
 <script>
 import TutorialDataService from "../services/TutorialDataService";
 import useVuelidate from '@vuelidate/core'
-import { minLength } from '@vuelidate/validators'
+import { minLength, required } from '@vuelidate/validators'
 export default {
   name: "tutorials-list",
   data() {
@@ -88,19 +89,18 @@ export default {
   },
   validations() {
     return {
-      title :{ minLength:  minLength(4), $lazy: false}
+      title :{ required, minLength:  minLength(4), $lazy: false }
     }
   },
   methods: {
   filteredList() {
     this.filteredTutorials = this.tutorials.filter((tutorial) =>
-          tutorial.title.toLowerCase().includes( this.title.toLowerCase()) //Filter using Title
-      ||  tutorial.description.toLowerCase().includes( this.searchTerms.toLowerCase()) // Filter using Description
+          (tutorial.title.toLowerCase().includes( this.title.toLowerCase()) //Filter using Title
+      ||  tutorial.description.toLowerCase().includes( this.searchTerms.toLowerCase())) // Filter using Description
       &&  tutorial.deleted_at == null // Logically hide the deleted tutorials if it has not deleted_at date.
-  )
+          )
     return this.filteredTutorials;
- 
-},
+    },
     retrieveTutorials() {
       TutorialDataService.getAll()
         .then(response => {
@@ -115,9 +115,10 @@ export default {
       this.retrieveTutorials();
       this.currentTutorial = null;
       this.currentIndex = -1;
+      
     },
     setActiveTutorial(tutorial, index) {
-      this.currentTutorial = tutorial;//-----------------------------
+      this.currentTutorial = tutorial;
       this.currentTutorial.video_thumb = "https://img.youtube.com/vi/" + this.youtube_parser(this.currentTutorial.video_url) +"/hqdefault.jpg";
       this.currentIndex = tutorial ? index : -1;
     },
@@ -143,21 +144,17 @@ export default {
         var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
         var match = url.match(regExp);
         return (match&&match[7].length==11)? match[7] : false;
-    },
-    getVideoThumbs(){
-
-      this.tutorials.forEach(function (element) {
-          element.Active = "false";
-        });
-      console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
     }
-
   },
   mounted() {
     this.retrieveTutorials();
-        this.getVideoThumbs();
-
-  }
+  },
+  computed: {
+    isDisabled: function(){
+        //enables the Submit button only if there is a valid title or pulish_status selection 
+        return this.title == null || this.v$.title.required.$invalid  || this.v$.title.minLength.$invalid;
+    }
+  },
 };
 </script>
 <style>
