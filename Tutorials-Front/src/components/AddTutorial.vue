@@ -90,7 +90,7 @@ export default {
     }
   },
   methods: {
-  saveTutorial() {
+  saveTutorial() {          
       var data = {
         title: this.tutorial.title,
         video_url: this.tutorial.video_url,
@@ -102,11 +102,13 @@ export default {
       TutorialDataService.create(data)
         .then(response => {
           this.tutorial.id = response.data.id;
-          console.log(response.data);
+          //console.log(response);
           this.submitted = true;
         })
         .catch(e => {
           console.log(e);
+         confirm("Error "+e.response.status+": "+e.response.statusText +"!!!")
+         this.$router.push("/");
         });
     },
     newTutorial() {
