@@ -52,14 +52,14 @@
         </div>
       </div>
       <div v-if="this.currentTutorial.deleted_at" class="text-center text-danger">Borrado el {{currentTutorial.deleted_at}}</div>
-      
+       </form>
       <button  v-if="!this.currentTutorial.deleted_at" type="submit" class="btn btn-primary btn-md  fix-btn float-right "
         @click="updateTutorial"
       >
       Actualizar
       </button>
-    </form>
-    <p>{{ message }}</p>
+   
+    <p class="text-success">{{ message }}</p>
   </div>
   <div v-else>
     <br />
