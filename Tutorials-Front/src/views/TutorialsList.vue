@@ -120,7 +120,7 @@ export default {
         .catch(e => {
           console.log(e);
         });
-        setTimeout(() => { this.$store.dispatch('NotLoadingM') },2000) ; //for testing Loading Layout spinner  ?
+        setTimeout(() => { this.$store.dispatch('NotLoadingM') },1000) ; //for testing Loading Layout spinner  ?
         //this.$store.dispatch('NotLoadingM') 
         
      

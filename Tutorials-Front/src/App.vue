@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
   <MainLayout v-show="!IsLoading"/>
   <LoadLayout v-slot="{TextFromBaseLoading}" v-show="IsLoading">
       {{TextFromBaseLoading}}
