@@ -5,7 +5,7 @@
           <div class="col-md-12 searchAdapt">
             <div class="input-group mb-3"> 
               <input id="searchBox" :disabled="searchDisabled" type="text" class="form-control inactive" placeholder="Título o descripción"
-                v-model="title" v-on:keyup.enter="searchTitle"/>
+                v-model="title"/>
               <div class="input-group-append">
                 <button :disabled="isDisabled" v-bind:class="[ searchDisabled ? 'btn btn-outline-danger btn-md' : 'btn btn-outline-info' ]" type="button" 
                   @click="searchTitle"
@@ -226,7 +226,7 @@ export default {
       width: 100%;
       height: 50px;
       
-      overflow: scroll;
+      overflow-y: scroll;
 }
 }
 </style>
