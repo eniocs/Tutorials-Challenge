@@ -102,14 +102,20 @@ export default {
       return this.filteredTutorials;
     },
     retrieveTutorials() {
+      this.$store.dispatch('DoLoadingM') //Loading State Start
       TutorialDataService.getAll()
         .then(response => {
           this.tutorials = response.data;
           console.log(response.data);
+          setTimeout(() => {  console.log("World!"); },10000) ;
         })
         .catch(e => {
           console.log(e);
         });
+        //setTimeout(() => { this.$store.dispatch('NotLoadingM') },5000) ; //for testing Loading Layout spinner
+        this.$store.dispatch('NotLoadingM');
+        
+     
     },
     refreshList() {
       this.retrieveTutorials();
@@ -183,5 +189,6 @@ export default {
   position: absolute;
   margin-top: -15px;
 }
+
 
 </style>

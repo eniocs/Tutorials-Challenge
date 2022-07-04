@@ -1,24 +1,33 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand">
-      <router-link to="/" class="navbar-brand text-dark">Tutos.com</router-link>
-      <div class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link to="/tutorials" class="nav-link text-dark">Tutorials</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/add" class="nav-link text-dark">Agregar</router-link>
-        </li>
-      </div>
-    </nav>
-    <div class="container mt-3 col-lg-6 ">
-      <router-view />
-    </div>
+  <MainLayout v-show="!IsLoading"/>
+  <LoadLayout  v-show="IsLoading">
+      <BaseLoading/>
+  </LoadLayout>
   </div>
 </template>
 <script>
+//import { mapState } from 'vuex'
+import LoadLayout from './layouts/LoadLayout'
+import MainLayout from './layouts/MainLayout'
+import BaseLoading from '@/components/BaseLoading.vue'
 export default {
-  name: "app"
+  name: "app",
+  components: {
+    MainLayout,
+    LoadLayout,
+    BaseLoading
+  },
+  mounted(){
+    
+    ///this.$store.dispatch('DoLoading')
+    
+  },
+  computed: {
+    IsLoading () {
+     return  this.$store.state.isLoading
+    }
+  },
 };
 
 

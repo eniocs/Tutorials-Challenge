@@ -119,6 +119,7 @@ export default {
         });
     },
     updateTutorial() {
+    console.log(this.$store.state.isLoading)
       TutorialDataService.update(this.currentTutorial.id, this.currentTutorial)
         .then(response => {
           console.log(response.data);

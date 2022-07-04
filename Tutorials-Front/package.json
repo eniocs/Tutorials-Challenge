@@ -21,7 +21,9 @@
     "popper.js": "^1.16.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.16",
-    "vuelidate": "^0.7.7"
+    "vue-spinner": "^1.0.4",
+    "vuelidate": "^0.7.7",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.8",
