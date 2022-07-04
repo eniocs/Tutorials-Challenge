@@ -45,9 +45,5 @@ const store = createStore({
   })
   
 
-const MyV3App = createApp(App)
-MyV3App.component('font-awesome-icon', FontAwesomeIcon)
-MyV3App.use(store)
-MyV3App.use(router)
-MyV3App.mount('#app')
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')
 

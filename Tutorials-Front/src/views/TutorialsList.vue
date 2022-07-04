@@ -2,7 +2,7 @@
   <div>
   <div v-if="(tutorials.length && !searchTerms.length) ||( !filteredTutorials.length == 0 )">
     <div class="list row  p-4 rounded bcolor">
-          <div class="col-md-12">
+          <div class="col-md-12 searchAdapt">
             <div class="input-group mb-3"> 
               <input id="searchBox" :disabled="searchDisabled" type="text" class="form-control inactive" placeholder="Título o descripción"
                 v-model="title" v-on:keyup.enter="searchTitle"/>
@@ -17,7 +17,7 @@
             <small class="text-danger validatorAlert" v-if="v$.title.minLength.$invalid">* La busqueda debe contener mas de cuatro caracteres</small>
             
           </div>
-          <div class="col-md-6 mt-2">
+          <div class="col-md-6 mt-2" style="order:3">
             <h4>Tutoriales</h4>
             <hr>
             <ul class="list-group"> 
@@ -34,17 +34,19 @@
               Eliminar todos
             </button>
           </div>
-          <div class="col-md-6 mt-lg-2 mt-md-2 mt-sm-4">
-            <div v-if="currentTutorial">
+          <div class="col-md-6 mt-lg-2 mt-md-2 mt-sm-4 preview" >
+           
+             <div v-if="currentTutorial">
               <h4>Tutorial</h4>
               
-              <hr>
+              <hr class="adapt">
               <div>
                 <label><strong>Titulo:</strong></label> {{ currentTutorial.title }}
               </div>
                 <img :src="currentTutorial.video_thumb" alt="" class="w-100"> 
               <div>
-                <label><strong>Descripción:</strong></label> {{ currentTutorial.description }}
+                <label><strong>Descripción:</strong></label>  <div class="description"><current-tutorial-description> <span v-if="currentTutorial.description">{{currentTutorial.description}}</span></current-tutorial-description></div> 
+
               </div>
               <div>
                 <label><strong>Estado:</strong></label> {{ currentTutorial.published_status ? "Publicado" : "Oculto" }}
@@ -52,10 +54,11 @@
               <router-link :to="'/tutorials/' + currentTutorial.id" class="btn btn-warning btn-md float-right">Editar</router-link>
             </div>
             <div v-else>
-              <h4>&nbsp;</h4>
-              <hr>
+              <h4 class="adapt">&nbsp;</h4>
+              <hr class="adapt">
               <p class="borderstyle">Seleccione un tutorial para ver su información aqui!</p>
             </div>
+         
           </div>
       </div>
     </div>  
@@ -70,11 +73,16 @@
   </div>
 </template>
 <script>
+import CurrentTutorialDescription from "../components/currenttutorialDescription/Index"
 import TutorialDataService from "../services/TutorialDataService";
 import useVuelidate from '@vuelidate/core'
 import { minLength, required } from '@vuelidate/validators'
 export default {
   name: "tutorials-list",
+  components :{
+    CurrentTutorialDescription,
+
+  },
   data() {
     return {
       v$: useVuelidate(),
@@ -107,13 +115,13 @@ export default {
         .then(response => {
           this.tutorials = response.data;
           console.log(response.data);
-          setTimeout(() => {  console.log("World!"); },10000) ;
+         
         })
         .catch(e => {
           console.log(e);
         });
-        //setTimeout(() => { this.$store.dispatch('NotLoadingM') },5000) ; //for testing Loading Layout spinner
-        this.$store.dispatch('NotLoadingM');
+        setTimeout(() => { this.$store.dispatch('NotLoadingM') },2000) ; //for testing Loading Layout spinner  ?
+        //this.$store.dispatch('NotLoadingM') 
         
      
     },
@@ -190,5 +198,35 @@ export default {
   margin-top: -15px;
 }
 
+.preview{
+  order: 5;
+}
+.searchAdapt{
+  order:2;
+}
 
+.description {
+      width: 100%;
+      height: 100%;
+      
+      overflow: scroll;
+}
+
+@media only screen and (max-width: 766px) {
+ .preview{
+  order: 2;
+}
+.searchAdapt{
+  order:1;
+}
+.adapt{    
+  position: absolute;
+}
+.description {
+      width: 100%;
+      height: 50px;
+      
+      overflow: scroll;
+}
+}
 </style>

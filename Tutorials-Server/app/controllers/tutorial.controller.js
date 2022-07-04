@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken")
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
-
   //for debugging
   console.log(Date.now()) // new Timestamp
   console.log(jwt.verify(req.body.token, 'secret').exp) // Token Timestamp

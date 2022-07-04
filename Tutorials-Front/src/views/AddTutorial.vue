@@ -1,5 +1,5 @@
 <template>
-  <div class="submit-form text-left align-middle" @closed="v$.$reset()">
+  <div class="text-left align-middle" @closed="v$.$reset()">
     <div v-if="!submitted" class="border p-4 rounded bcolor" >
         <h5 class="text-dark">Nuevo tutorial</h5>
         <form @submit.prevent="handleSubmit">

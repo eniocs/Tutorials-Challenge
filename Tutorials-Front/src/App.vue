@@ -1,7 +1,8 @@
 <template>
   <div id="app">
   <MainLayout v-show="!IsLoading"/>
-  <LoadLayout  v-show="IsLoading">
+  <LoadLayout v-slot="{TextFromBaseLoading}" v-show="IsLoading">
+      {{TextFromBaseLoading}}
       <BaseLoading/>
   </LoadLayout>
   </div>
@@ -20,7 +21,7 @@ export default {
   },
   mounted(){
     
-    ///this.$store.dispatch('DoLoading')
+    
     
   },
   computed: {
