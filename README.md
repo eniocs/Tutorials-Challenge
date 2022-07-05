@@ -1,4 +1,4 @@
-# Tutorials
+# Challenge part 1 - Tutorials
  Tutorials SPA
 -------------------------------------------
 
@@ -22,7 +22,6 @@ VERB - PATH - Description
 POST - api/tutorials/ - Tutorial create
 
 GET - api/tutorials/ - Tutorial list
-Should support query params as well for filtering
 
 GET - api/tutorials/:id - Tutorial show
 
@@ -30,9 +29,11 @@ DELETE - api/tutorials/:id - Tutorial delete
 
 PUT - api/tutorials/:id - Tutorial update
 
-DELETE - api/tutorials/mass_delete - Delete all tutorials
+DELETE - api/tutorials - Delete all tutorials
 
 -------------------------------------------
 Run server: Node server.js
 Run client: npm run serve
 
+#Challenge part 2 - Reactivity
+Own Reactivity System Challenge build, no ECMAScript 6
