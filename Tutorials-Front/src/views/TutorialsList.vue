@@ -130,18 +130,20 @@ export default {
             )
       return this.filteredTutorials;
     },
-    retrieveTutorials() {
+    async retrieveTutorials() {
       this.$store.dispatch('DoLoadingM') //Loading State Start
-      TutorialDataService.getAll()
+      await TutorialDataService.getAll()
         .then(response => {
           this.tutorials = response.data;
           console.log(response.data);
+          //setTimeout(() => { this.$store.dispatch('NotLoadingM') },3000) ; //for testing Loading Layout spinner  ?
+          this.$store.dispatch('NotLoadingM') 
         })
         .catch(e => {
           console.log(e);
+          this.$store.dispatch('NotLoadingM')
         });
-        setTimeout(() => { this.$store.dispatch('NotLoadingM') },0) ; //for testing Loading Layout spinner  ?
-        //this.$store.dispatch('NotLoadingM') 
+        
         
     },
     refreshList() {

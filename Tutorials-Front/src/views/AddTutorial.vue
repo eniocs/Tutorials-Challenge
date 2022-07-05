@@ -73,7 +73,7 @@ export default {
         description: "",
         published_status: null,
         deleted_at: null,
-        token: jwtService.create(),
+        token: jwtService.create(), //creates the timestamp for later use in backend
       },
       submitted: false,
       toggle_status : true
@@ -107,12 +107,11 @@ export default {
         })
         .catch(e => {
           console.log(e);
-         confirm("Error "+e.response.status+": "+e.response.statusText +"!!!")
-         this.$router.push("/");
+          confirm("Error "+e.response.status+": "+e.response.statusText +"!!!")
+          this.$router.push("/");
         });
     },
     newTutorial() {
-      
       this.submitted = false;
       this.tutorial = {};
       this.tutorial.token = jwtService.create();
