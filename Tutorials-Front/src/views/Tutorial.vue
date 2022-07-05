@@ -1,5 +1,5 @@
 <template>
-  <div v-if="currentTutorial" class="edit-form text-left align-middle border p-4 rounded bcolor" @closed="v$.$reset()">
+  <div v-if="currentTutorial" class="text-left align-middle border p-4 rounded bcolor" @closed="v$.$reset()">
     <h4>Editar Tutorial
     <button v-if="!this.currentTutorial.deleted_at" class="btn btn-danger btn-md float-right mr-0"
       @click="deleteTutorial"
@@ -150,10 +150,7 @@ export default {
 };
 </script>
 <style>
-.edit-form {
-  max-width: 1500px;
-  margin: auto;
-}
+
 
 .fix-btn{
 margin-top: -33px;

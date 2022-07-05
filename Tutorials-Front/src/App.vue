@@ -1,10 +1,10 @@
 <template>
   <div>
-  <MainLayout v-show="!IsLoading"/>
-  <LoadLayout v-slot="{TextFromBaseLoading}" v-show="IsLoading">
-      {{TextFromBaseLoading}}
-      <BaseLoading/>
-  </LoadLayout>
+    <MainLayout v-show="!IsLoading"/>
+    <LoadLayout v-slot="{TextFromBaseLoading}" v-show="IsLoading">
+        {{TextFromBaseLoading}}
+        <BaseLoading/>
+    </LoadLayout>
   </div>
 </template>
 <script>
@@ -12,17 +12,13 @@
 import LoadLayout from './layouts/LoadLayout'
 import MainLayout from './layouts/MainLayout'
 import BaseLoading from '@/components/BaseLoading.vue'
+
 export default {
   name: "app",
   components: {
     MainLayout,
     LoadLayout,
     BaseLoading
-  },
-  mounted(){
-    
-    
-    
   },
   computed: {
     IsLoading () {
@@ -56,4 +52,6 @@ backdrop-filter: blur(11.5px);
 -webkit-backdrop-filter: blur(11.5px);
 border: 1px solid rgba(255, 255, 255, 0.41);
 }
+
+
 </style>

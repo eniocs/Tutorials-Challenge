@@ -4,8 +4,8 @@
         <!-- Requirement:Named Slot -->
         <slot name="mainmenu"></slot> 
     </header>
-    <main>
-      <slot></slot>
+    <main >
+      <slot ></slot>
     </main>
   </div>
 </template>
