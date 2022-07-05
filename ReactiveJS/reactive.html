@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="reactive.js"></script>
+    </head>
+<body>
+
+    <div id="app">
+        <h1>Enter product price and qtty</h1>
+        
+        <p id="message"></p><br>
+        <label>Price </label><br>
+        <input id="priceInput" placeholder="Enter price" 
+        oninput="methods.changePrice()" /> <br>
+         <label>Qtty </label><br>
+         <input id="qttyInput" placeholder="Enter qtty" 
+        oninput="methods.changeQtty()" /> <br> <br>
+         <label>Total</label><br>
+         <input disabled="true"id="totalInput" placeholder="Total" 
+        oninput="methods.change()" />
+      </div>
+      
+</body>
+</html> 
+
