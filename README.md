@@ -35,5 +35,5 @@ DELETE - api/tutorials - Delete all tutorials
 Run server: Node server.js
 Run client: npm run serve
 
-#Challenge part 2 - Reactivity
+# Challenge part 2 - Reactivity
 Own Reactivity System Challenge build, no ECMAScript 6
