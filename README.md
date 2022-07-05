@@ -1,49 +1,28 @@
 # Challenge part 1 - Tutorials
- Tutorials SPA
-
+ 
 [Link to youtube Challenge part 1 showcase](https://www.youtube.com/watch?v=v2fUj8zf40w)
--------------------------------------------
 
-Data model and associations
-
-● Tutorial has id, title (required), video url (optional), description (optional), published
-status (required), deleted at (optional).
-
-● User can create, retrieve, update, delete Tutorials.
-
-● There is a search box for finding Tutorials by title and description.
-
--------------------------------------------
-
-API Endpoints
+Vue3 - Node - Express - MySQL - Sequelize - Vuex - Router - Store - StateManagement - JWTtoken - FontAwesome - Vuelidate - Vue-spinner - Axios - Transition - VueSmoothScroll - Bootstrap
 
 
+## Front-end
+` npm install `
 
-VERB - PATH - Description
+` Npm run serve `
 
-POST - api/tutorials/ - Tutorial create
+` npm run build `
 
-GET - api/tutorials/ - Tutorial list
+## Back-end
 
-GET - api/tutorials/:id - Tutorial show
+> For DB table creation Configure DB connection Tutorials-Server\app\config\db.config.js
 
-DELETE - api/tutorials/:id - Tutorial delete
+> Every time server.js starts it wipes out all the tables form configured database.
 
-PUT - api/tutorials/:id - Tutorial update
+ ` Run server: Node server.js `
 
-DELETE - api/tutorials - Delete all tutorials
+# Challenge part 2 - Reactive JS
 
--------------------------------------------
-● Run server: Node server.js
-● Run client: npm run serve
-------------------------------------------
-#Sequelize #Vuex #Router #Store #StateManagement #JWTtoken #FontAwesome #Vuelidate #Vue-spinner #Axios #Transition #VueSmoothScroll #Bootstrap
-
-
-
-
-# Challenge part 2 - Reactivity
-Reactive JS 
 [Link to youtube Challenge part 2 showcase](https://www.youtube.com/watch?v=GIFM09uoq28)
+
 Own Reactivity System Challenge build, no ECMAScript 6
 
