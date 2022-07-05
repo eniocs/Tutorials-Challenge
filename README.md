@@ -34,6 +34,11 @@ DELETE - api/tutorials - Delete all tutorials
 -------------------------------------------
 ● Run server: Node server.js
 ● Run client: npm run serve
+------------------------------------------
+#Sequelize #Vuex #Router #Store #StateManagement #JWTtoken #FontAwesome #Vuelidate #Vue-spinner #Axios #Transition #VueSmoothScroll #Bootstrap
+
+
+
 
 # Challenge part 2 - Reactivity
 Own Reactivity System Challenge build, no ECMAScript 6
