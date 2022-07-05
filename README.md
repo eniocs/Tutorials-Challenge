@@ -32,7 +32,7 @@ PUT - api/tutorials/:id - Tutorial update
 
 DELETE - api/tutorials/mass_delete - Delete all tutorials
 
-
-
 -------------------------------------------
-Run server: Node Tutorials-Server/server.js
+Run server: Node server.js
+Run client: npm run serve
+
