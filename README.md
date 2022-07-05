@@ -1,5 +1,7 @@
 # Challenge part 1 - Tutorials
  Tutorials SPA
+
+[Link to youtube Challenge part 1 showcase](https://www.youtube.com/watch?v=v2fUj8zf40w)
 -------------------------------------------
 
 Data model and associations
@@ -41,4 +43,7 @@ DELETE - api/tutorials - Delete all tutorials
 
 
 # Challenge part 2 - Reactivity
+Reactive JS 
+[Link to youtube Challenge part 2 showcase](https://www.youtube.com/watch?v=GIFM09uoq28)
 Own Reactivity System Challenge build, no ECMAScript 6
+
