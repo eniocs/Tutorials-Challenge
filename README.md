@@ -32,8 +32,8 @@ PUT - api/tutorials/:id - Tutorial update
 DELETE - api/tutorials - Delete all tutorials
 
 -------------------------------------------
-Run server: Node server.js
-Run client: npm run serve
+● Run server: Node server.js
+● Run client: npm run serve
 
 # Challenge part 2 - Reactivity
 Own Reactivity System Challenge build, no ECMAScript 6
